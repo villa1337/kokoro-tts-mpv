@@ -1,0 +1,14 @@
+#!/bin/bash
+# Start the Kokoro TTS daemon (loads model once, stays in memory until told to quit)
+REAL_SCRIPT="$(readlink -f "$0")"
+SCRIPT_DIR="$(cd "$(dirname "$REAL_SCRIPT")/.." && pwd)"
+VENV="$SCRIPT_DIR/.venv"
+
+if [[ ! -d "$VENV" ]]; then
+    echo "Error: venv not found at $VENV" >&2
+    echo "Run install.sh first." >&2
+    exit 1
+fi
+
+source "$VENV/bin/activate"
+exec python3 "$SCRIPT_DIR/daemon/kokoro-tts-daemon.py"

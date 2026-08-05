@@ -1,0 +1,14 @@
+#!/bin/bash
+# kokoro-speak: Send text to the kokoro-tts-daemon for instant playback
+# Usage: kokoro-speak "text to speak"
+#        kokoro-speak STOP   (kill current playback)
+#        kokoro-speak QUIT   (shut down daemon)
+SOCKET="/tmp/kokoro-tts.sock"
+
+if [[ ! -S "$SOCKET" ]]; then
+    echo "kokoro-tts-daemon not running." >&2
+    exit 1
+fi
+
+TEXT="${*:-$(cat)}"
+echo -n "$TEXT" | socat - UNIX-CONNECT:"$SOCKET"
