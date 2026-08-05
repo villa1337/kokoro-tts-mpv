@@ -78,3 +78,11 @@ rm -rf ~/Documents/Projects/kokoro-tts-mpv
 ## License
 
 [BSD Zero Clause](LICENSE) — do whatever you want.
+
+## Support
+
+If this saved you from squinting at subtitles, consider buying me a coffee:
+
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue?logo=paypal)](https://paypal.me/bennettone)
+
+⭐ Star the repo if it helped you!
